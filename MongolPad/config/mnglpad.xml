@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch4jConfig>
+  <dontWrapJar>false</dontWrapJar>
+  <headerType>gui</headerType>
+  <jar>release\mnglpad\mnglpad.jar</jar>
+  <outfile>release\mnglpad\mnglpad.exe</outfile>
+  <errTitle></errTitle>
+  <cmdLine></cmdLine>
+  <chdir>.</chdir>
+  <priority>normal</priority>
+  <downloadUrl>http://java.com/download</downloadUrl>
+  <supportUrl></supportUrl>
+  <stayAlive>false</stayAlive>
+  <restartOnCrash>false</restartOnCrash>
+  <manifest>MnglpadJarApp.manifest</manifest>
+  <icon>../release\mnglpad\mnglpad.ico</icon>
+  <classPath>
+    <mainClass>com.mnglpad.Main</mainClass>
+  </classPath>
+  <jre>
+    <path>../release\mnglpad\windows\jre9mngl</path>
+    <bundledJre64Bit>true</bundledJre64Bit>
+    <bundledJreAsFallback>false</bundledJreAsFallback>
+    <minVersion>1.7.0</minVersion>
+    <maxVersion>1.9.0</maxVersion>
+    <jdkPreference>preferJre</jdkPreference>
+    <runtimeBits>64/32</runtimeBits>
+    <initialHeapSize>128</initialHeapSize>
+    <maxHeapSize>2048</maxHeapSize>
+  </jre>
+  <versionInfo>
+    <fileVersion>2.0.0.1</fileVersion>
+    <txtFileVersion>2.0.0.1</txtFileVersion>
+    <fileDescription>Mongolain NotePad Application</fileDescription>
+    <copyright>Dayaar Tech Co. Ltd &amp; Almas Inc.</copyright>
+    <productVersion>2.0.0.1</productVersion>
+    <txtProductVersion>2.0.0.1</txtProductVersion>
+    <productName>MongolPad</productName>
+    <companyName>Dayaar Tech Co. Ltd &amp; Almas Inc.</companyName>
+    <internalName>mnglpad</internalName>
+    <originalFilename>mnglpad.exe</originalFilename>
+    <trademarks>Dayaar</trademarks>
+    <language>ENGLISH_US</language>
+  </versionInfo>
+</launch4jConfig>

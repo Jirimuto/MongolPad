@@ -1,0 +1,27 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<jnlp spec = "1.5+" version = "1.1.01" codebase = "" href="mnglpad.jnlp">  
+	<information>
+	    <title>Traditional Mongolian NotePad</title>
+	    <vendor>Almas</vendor>
+		<homepage href = "http://www.mongolfont.com"/>
+		<offline-allowed/>
+	    <description>Traditional Mongolian NotePad application.</description>
+		<description kind = "short">MnglPad</description>
+		<description kind = "one-line">MnglPad</description>
+		<description kind = "tooltip">Traditional Mongolian NotePad application</description>
+	    <offline-allowed/>
+		<icon href = "mnglpad.ico"/>
+		<shortcut online="true">
+			<desktop/>
+			<menu submenu="MnglPad"/>
+		</shortcut>
+	</information>
+	<resources>
+		<j2se version = "1.6+" href = "http://java.sun.com/products/autodl/j2se" initial-heap-size = "32m" max-heap-size = "1024m"/>
+		<jar href = "mnglpad.jar" main = "true" download = "eager"/>
+	</resources>  
+	<application-desc main-class = "com.mnglpad.Main"/>  
+	<security>
+		<all-permissions/>  
+	</security>
+</jnlp>

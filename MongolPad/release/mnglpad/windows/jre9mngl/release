@@ -1,0 +1,6 @@
+IMPLEMENTOR="N/A"
+JAVA_VERSION="9"
+MODULES="java.base java.datatransfer java.logging java.activation java.compiler java.xml java.prefs java.desktop java.rmi java.transaction jdk.unsupported java.security.sasl java.naming java.corba java.instrument java.management java.management.rmi java.scripting java.security.jgss java.xml.crypto java.sql java.sql.rowset java.se jdk.httpserver java.xml.bind java.xml.ws.annotation java.xml.ws java.se.ee java.smartcardio jdk.accessibility jdk.charsets jdk.crypto.ec jdk.crypto.cryptoki jdk.crypto.mscapi jdk.dynalink jdk.incubator.httpclient jdk.internal.le jdk.internal.vm.ci jdk.jdwp.agent jdk.jsobject jdk.localedata jdk.management.agent jdk.management jdk.naming.dns jdk.naming.rmi jdk.net jdk.pack jdk.scripting.nashorn jdk.scripting.nashorn.shell jdk.sctp jdk.security.auth jdk.security.jgss jdk.xml.dom jdk.zipfs"
+OS_ARCH="x86_64"
+OS_NAME="Windows"
+SOURCE=".: corba: hotspot: jaxp: jaxws: jdk: langtools: nashorn:"

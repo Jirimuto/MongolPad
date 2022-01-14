@@ -1,0 +1,111 @@
+<!-- ============================================= -->
+<!-- Mongol Pad  		                           -->
+<!-- ============================================= -->
+
+<project name="MongolPad" default="dist" basedir=".">
+
+  <description>
+  	Mongol Pad build.xml 
+  </description>
+
+  <!-- set global properties for this build -->
+  <property name="src" value="src"/>
+  <property name="build.dir" value="build"/>
+  <property name="bin.dir" value="bin"/>
+  <property name="launch4j.dir" location="launch4j"/>  
+  <property name="dist.dir" value="release/mnglpad"/>
+  <property name="release.dir" value="release"/>
+  <property name="mnglswing.dir" value="../mnglswing"/>
+  <property name="jar.name" value="mnglpad"/>
+  <property name="zip.name" value="mnglpad"/>
+  <property name="keystore.dir" value="keystore"/>
+
+  <taskdef name="launch4j"
+	classname="net.sf.launch4j.ant.Launch4jTask"
+	classpath="${launch4j.dir}/launch4j.jar
+		:${launch4j.dir}/lib/xstream.jar" />
+	
+  <!-- set path to include the necessary jar files for javac -->
+  <path id="project.class.path">
+    <pathelement path="${classpath}"/>
+    <pathelement path="${mnglswing.dir}/mnglswing.jar"/>
+  </path>
+
+  <target name="init" description="initialization target">
+    <echo message="=========== Build MnglPad"/>
+    <!-- create the time stamp -->
+    <tstamp/>
+    <!-- create the build directory structure used by compile -->
+    <mkdir dir="${build.dir}"/>
+    <!-- check for the distribution directory -->
+    <available file="${dist.dir}" type="dir" property="dist.dir.exists"/>
+  </target>
+
+  <target name="compile" depends="init">
+    <!-- not used -->
+    <!-- compile the java code from ${src} into ${build.dir} -->
+
+    <javac srcdir="${src}" destdir="${build.dir}" deprecation="on" debug="on" encoding="UTF-8">
+      	<classpath refid="project.class.path"/>
+      	<compilerarg value="-Xlint:unchecked" />
+    </javac>
+
+    <!-- copy all image & sound files from src to the build directory -->
+    <copy todir="${build.dir}">
+      <fileset dir="${src}">
+        <include name="**/images/*"/>
+        <include name="**/*.ttf"/>
+        <include name="**/*.gif"/>
+        <include name="**/*.png"/>
+        <include name="**/*.jpg"/>
+        <include name="**/*.wav"/>
+        <include name="**/*.htm"/>
+        <include name="**/*.html"/>
+        <include name="**/*.properties"/>
+        <exclude name="**/package.html"/>
+      </fileset>
+    </copy>
+	
+    <copy todir="${build.dir}">
+      <fileset dir="${bin.dir}">
+        <include name="**/*"/>
+        <exclude name="**/package.html"/>
+      </fileset>
+    </copy>
+    
+    <unjar src="${mnglswing.dir}/mnglswing.jar" dest="${build.dir}" overwrite="no"/>
+    
+  </target>
+
+  <!-- =========================================== -->
+  <!-- Distribution                                -->
+  <!-- =========================================== -->
+  <target name="dist" depends="compile">
+    <!-- put everything from ${build.dir} into the ${jar.name}.jar file -->
+    <jar jarfile="${dist.dir}/${jar.name}.jar" basedir="${build.dir}">
+		<manifest>
+			<attribute name="Specification-Title" value="mnglpad"/>
+			<attribute name="Specification-Version" value="2.0"/>
+			<attribute name="Specification-Vendor" value="(C) 2020 Almas Inc."/>
+			<attribute name="Implementation-Title" value="mnglpad 2.0"/>
+			<attribute name="Implementation-Version" value="2.0 ${DSTAMP}-${TSTAMP}"/>
+			<attribute name="Implementation-Vendor" value="Almas Inc."/> 
+			<attribute name="Implementation-URL" value="http://www.mnglpad.com"/>
+			<attribute name="Main-Class" value="com.mnglpad.Main"/>
+		</manifest>
+	</jar>
+	<signjar jar="${dist.dir}/${jar.name}.jar" alias="mnglpad"
+		storepass="myPassword" keystore="${keystore.dir}/myKeystore" />
+
+    <zip destfile="./release/${zip.name}.zip" basedir="${release.dir}">
+        <include name="mnglpad/**/*"/>
+	</zip>
+  </target>
+
+  <target name="clean">
+    <!-- Delete the ${build.dir} directory trees -->
+    <delete dir="${build.dir}"/>
+    <delete file="${dist.dir}/${jar.name}.jar" failonerror="false"/>
+  </target>
+
+</project>
